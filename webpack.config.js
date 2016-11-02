@@ -10,8 +10,8 @@ module.exports = {
   ],
   output: {
     path: path.join(__dirname, 'build'),
-    filename: "bundle.js",
-    publicPath: "/js/"
+    filename: "js/bundle.js"
+    // publicPath: "/js/"
   },
   resolve: {
     extensions: ['', '.js', '.jsx'],

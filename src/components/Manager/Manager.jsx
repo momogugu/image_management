@@ -67,6 +67,8 @@ class Manager extends React.Component {
 		this.setState({
 			imageArr: this.state.image[className]
 		});
+		var imageArr = this.state.imageArr;
+		this.appendImage(6);
 	}
 	render() {
 		return (
