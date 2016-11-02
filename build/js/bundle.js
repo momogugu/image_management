@@ -21520,7 +21520,8 @@
 			var _this2 = _possibleConstructorReturn(this, (Manager.__proto__ || Object.getPrototypeOf(Manager)).call(this, props));
 
 			_this2.state = {
-				image: {}
+				image: {},
+				imageArr: []
 			};
 			return _this2;
 		}
@@ -21538,17 +21539,54 @@
 							image: response,
 							imageArr: response.allimage
 						});
-						// _this.appendImage(6);
+						_this.appendImage(6);
 					}
 				});
 			}
 		}, {
-			key: 'changeClass',
-			value: function changeClass(e) {
+			key: 'appendImage',
+			value: function appendImage(num) {
 				var _this = this;
-				console.log(e);
-				_this.setState({
-					imageArr: _this.state.image[e]
+				var offset = 0;
+				var imageArr = _this.state.imageArr;
+				if (num) {
+					while (num--) {
+						(function (i) {
+							if (imageArr[offset]) {
+								var tmpImage = new Image();
+								tmpImage.src = imageArr[offset];
+								tmpImage.className = "min";
+								console.log(tmpImage);
+								$(tmpImage).load(function () {
+									var col = _this.getShortCol();
+									col.append(tmpImage);
+								});
+								offset++;
+							}
+						})(num);
+					}
+				}
+			}
+		}, {
+			key: 'getShortCol',
+			value: function getShortCol() {
+				var height1 = $(".col-1").height();
+				var height2 = $(".col-2").height();
+				var height3 = $(".col-3").height();
+
+				if (height1 <= height2 && height1 <= height3) {
+					return $(".col-1");
+				} else if (height2 <= height1 && height2 <= height3) {
+					return $(".col-2");
+				} else {
+					return $(".col-3");
+				}
+			}
+		}, {
+			key: 'changeClass',
+			value: function changeClass(className) {
+				this.setState({
+					imageArr: this.state.image[className]
 				});
 			}
 		}, {
@@ -21558,7 +21596,7 @@
 					'div',
 					null,
 					_react2.default.createElement(_Navigation2.default, { changeClass: this.changeClass.bind(this) }),
-					_react2.default.createElement(_Album2.default, { image: this.state.image }),
+					_react2.default.createElement(_Album2.default, { imageArr: this.state.imageArr }),
 					_react2.default.createElement(_Mask2.default, null),
 					_react2.default.createElement(_Footer2.default, null)
 				);
@@ -21709,26 +21747,6 @@
 
 		_createClass(Album, [{
 			key: 'render',
-
-			// constructor(props) {
-			// 	super(props);
-			// 	this.state = {
-			// 		image: {}
-			// 	};
-			// }
-			// componentWillMount() {
-			// 	var _this = this;
-			// 	$.ajax({
-			// 		type:'GET',
-			// 		url: 'http://husterxsp.sinaapp.com/ria/getfile.php',
-			// 		dataType: 'json',
-			// 		success: function(response) {
-			// 			_this.setState({image: response})
-			// 			// imageArr = image.allimage;
-			//            	// _this.appendImage(6);
-			// 		}
-			// 	});
-			// }
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
@@ -21736,7 +21754,17 @@
 					_react2.default.createElement(
 						'div',
 						{ className: 'col-img' },
-						_react2.default.createElement(_Images2.default, { image: this.props.image })
+						_react2.default.createElement('div', { className: 'col-1' })
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'col-img' },
+						_react2.default.createElement('div', { className: 'col-2' })
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'col-img' },
+						_react2.default.createElement('div', { className: 'col-3' })
 					)
 				);
 			}
@@ -21783,27 +21811,39 @@
 		_createClass(Images, [{
 			key: 'render',
 
-			// appendImage() {
-			// 	if (imageArr[offset]) {
-			//         var tmpImage = new Image();
-			//         tmpImage.src = imageArr[offset];
-			//         tmpImage.className = "min";
-			//         $(tmpImage).load(function() {
-			//             var col = getShortCol();
-			//             col.append(tmpImage);
-			//             var colHeight = (getShortCol()).height() + (getShortCol()).offset().top;
-			//             if (colHeight < ($(window).scrollTop() + $(window).height())) {
-			//                 appendSingleImage();
-			//                 offset++;
-			//             }
-			//         });
-			//     } else {
-			//         return false;
-			//     }
+			// componentDidMount() {
+			// 	var imageArr = this.props.imageArr;
+			// 	console.log(imageArr);
+			// }
+			// appendImage(num) {
+			// 	var imageArr = this.props.imageArr;
+			// 	console.log(imageArr);
+			// var offset = 0;
+			// if (num) {
+			//        while (num--) {
+			//            (function(i) {
+			//                if (imageArr[offset]) {
+			//                    var tmpImage = new Image();
+			//                    tmpImage.src = imageArr[offset];
+			//                    tmpImage.className = "min";
+			//                    console.log(tmpImage);
+			//                    // $(tmpImage).load(function() {
+			//                    //     var col = getShortCol();
+			//                    //     col.append(tmpImage);
+			//                    // });
+			//                    offset++;
+			//                }
+			//            }(num))
+			//        }
+			//    }
+			// var colHeight = (getShortCol()).height() + (getShortCol()).offset().top;
+			// if (colHeight < ($(window).scrollTop() + $(window).height())) {
+			//     appendSingleImage();
+			//     offset++;
+			// }
 			// }
 			value: function render() {
-				// var imageArr = this.props.image.allimage;
-				// console.log(imageArr);
+				// this.appendImage(6);
 
 				return _react2.default.createElement('img', null);
 			}
