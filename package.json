@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "FIXFIX": "webpack --progress --profile --colors --display-error-details --display-cached",
-    "build": "webpack"
+    "build": "webpack",
+    "dev": "webpack-dev-server --devtool eval --progress --colors --hot --content-base build"
   },
   "keywords": [
     "react"
@@ -20,6 +21,11 @@
     "babel-preset-react": "^6.16.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2"
+  },
+  "devDependencies": {
+    "open-browser-webpack-plugin": "^0.0.3",
     "webpack": "^1.13.3",
     "webpack-dev-server": "^1.16.2"
   }
