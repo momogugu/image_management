@@ -139,7 +139,6 @@ class Mask extends React.Component {
 	    });
 	}
 	render() {
-		// this.showMaxImage(this.props.maxImage);
 		return (
 			<div className="shadow" >
 				<i className="icon-cancel" onClick={this.cancle.bind(this)}></i>

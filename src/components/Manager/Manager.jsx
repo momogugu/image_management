@@ -53,7 +53,7 @@ class Manager extends React.Component {
 			<div onClick={this.handleClick.bind(this)}>
 				<Navigation changeClass={this.changeClass.bind(this)} />
 				<Album imageArr={this.state.imageArr} showMaxImage={this.showMaxImage.bind(this)} />
-				<Mask ref="mask" maxImage={this.state.maxImage} />
+				<Mask ref="mask" />
 				<Footer />
 			</div>
 		);
