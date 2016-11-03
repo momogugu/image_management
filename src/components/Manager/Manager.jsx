@@ -10,7 +10,8 @@ class Manager extends React.Component {
 			super(props);
 			this.state = {
 				image: {},
-				imageArr: []
+				imageArr: [],
+				maxImage: ''
 			};
 		}
 	componentWillMount() {
@@ -33,12 +34,18 @@ class Manager extends React.Component {
 			imageArr: this.state.image[className]
 		});
 	}
+	showMaxImage(image) {
+		this.setState({
+			maxImage: image
+		})
+		this.refs.mask.showMaxImage(image);
+	}
 	render() {
 		return (
 			<div>
 				<Navigation changeClass={this.changeClass.bind(this)} />
-				<Album imageArr={this.state.imageArr} />
-				<Mask />
+				<Album imageArr={this.state.imageArr} showMaxImage={this.showMaxImage.bind(this)} />
+				<Mask ref="mask" maxImage={this.state.maxImage} />
 				<Footer />
 			</div>
 		);

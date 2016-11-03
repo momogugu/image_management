@@ -15,7 +15,7 @@ class Album extends React.Component {
 	                    var tmpImage = new Image();
 	                    tmpImage.src = imageArr[offset];
 	                    tmpImage.className = "min";
-	                    console.log(tmpImage)
+	                    // console.log(tmpImage)
 	                    $(tmpImage).load(function() {
 	                        var col = _this.getShortCol();
 	                        col.append(tmpImage);
@@ -24,6 +24,30 @@ class Album extends React.Component {
 	                }
 	            }(num))
 	        }
+	    }
+	    // console.log($('.col-1')[0].offset())
+	    // var colHeight = (_this.getShortCol())[0].height() + (_this.getShortCol())[0].offset().top;
+	    // if (colHeight < ($(window).scrollTop() + $(window).height())) {
+	    //     _this.appendSingleImage();
+	    //     offset++;
+	    // }
+	}
+	appendSingleImage() {
+		if (imageArr[offset]) {
+	        var tmpImage = new Image();
+	        tmpImage.src = imageArr[offset];
+	        tmpImage.className = "min";
+	        $(tmpImage).load(function() {
+	            var col = _this.getShortCol();
+	            col.append(tmpImage);
+	            var colHeight = (getShortCol()).height() + (getShortCol()).offset().top;
+	            if (colHeight < ($(window).scrollTop() + $(window).height())) {
+	                appendSingleImage();
+	                offset++;
+	            }
+	        });
+	    } else {
+	        return false;
 	    }
 	}
 	getShortCol() {
@@ -39,19 +63,22 @@ class Album extends React.Component {
 	        return $(".col-3");
 	    }
 	}
+	handleClick(e) {
+		this.props.showMaxImage(e.target);
+	}
 	render() {
-		console.log(this.props.imageArr);
+		// console.log(this.props.imageArr);
 		this.appendImage(6);
 		return (
 			<div className="water-fall">
 				<div className="col-img">
-					<div className="col-1"></div>
+					<div className="col-1" onClick={this.handleClick.bind(this)}></div>
 				</div>
 				<div className="col-img">
-					<div className="col-2"></div>
+					<div className="col-2" onClick={this.handleClick.bind(this)}></div>
 				</div>
 				<div className="col-img">
-					<div className="col-3"></div>
+					<div className="col-3" onClick={this.handleClick.bind(this)}></div>
 				</div>
 			</div>
 		);
