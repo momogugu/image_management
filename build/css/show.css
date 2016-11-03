@@ -62,14 +62,14 @@ i:hover {
     cursor: pointer;
     color: #fff;
 }
-#manage a {
+.manage a {
     line-height: 50px;
     display: block;
     height: 50px;
     text-decoration: none;
     color: #96a7be;
 }
-#manage a:hover {
+.manage a:hover {
     text-decoration: underline;
     color: #fff;
 }
@@ -87,7 +87,7 @@ i:hover {
     border-bottom: 10px solid #fff;
     border-left: 10px solid transparent;
 }
-#water-fall {
+.water-fall {
     display: flex;
     width: 900px;
     margin: 0 auto;
@@ -124,7 +124,7 @@ i:hover {
     height: 0;
     cursor: move;
 }
-#shadow {
+.shadow {
     position: fixed;
     z-index: 2;
     top: 0;
@@ -135,7 +135,7 @@ i:hover {
     opacity: 0;
     background-color: #000;
 }
-#shadow i {
+.shadow i {
     font-size: 60px;
     z-index: 5;
     display: block;
@@ -174,7 +174,7 @@ i:hover {
 .icon-up-open-big:hover {
     background-color: #e8594b;
 }
-#footer {
+.footer {
     line-height: 50px;
     height: 50px;
     text-align: center;
