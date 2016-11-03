@@ -40,9 +40,17 @@ class Manager extends React.Component {
 		})
 		this.refs.mask.showMaxImage(image);
 	}
+	handleClick(e) {
+		var target = e.target;
+		if (target.className == "icon-up-open-big") {
+	        $("body").animate({
+	            scrollTop: 0
+	        }, 500);
+	    }
+	}
 	render() {
 		return (
-			<div>
+			<div onClick={this.handleClick.bind(this)}>
 				<Navigation changeClass={this.changeClass.bind(this)} />
 				<Album imageArr={this.state.imageArr} showMaxImage={this.showMaxImage.bind(this)} />
 				<Mask ref="mask" maxImage={this.state.maxImage} />

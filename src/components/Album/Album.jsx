@@ -3,6 +3,8 @@ import React from 'react';
 import Images from '../Images/Images.jsx';
 
 class Album extends React.Component {
+	componentDidMount() {
+	}
 	appendImage(num) {
 		var _this = this;
 		var offset = 0;
@@ -19,14 +21,15 @@ class Album extends React.Component {
 	                    $(tmpImage).load(function() {
 	                        var col = _this.getShortCol();
 	                        col.append(tmpImage);
+	                        // console.log((_this.getShortCol()).offset().top);
 	                    });
 	                    offset++;
 	                }
 	            }(num))
 	        }
 	    }
-	    // console.log($('.col-1')[0].offset())
-	    // var colHeight = (_this.getShortCol())[0].height() + (_this.getShortCol())[0].offset().top;
+	    // console.log(this.refs.col1);
+	    // var colHeight = (_this.getShortCol()).height() + (_this.getShortCol()).offset().top;
 	    // if (colHeight < ($(window).scrollTop() + $(window).height())) {
 	    //     _this.appendSingleImage();
 	    //     offset++;
@@ -72,7 +75,7 @@ class Album extends React.Component {
 		return (
 			<div className="water-fall">
 				<div className="col-img">
-					<div className="col-1" onClick={this.handleClick.bind(this)}></div>
+					<div ref="col1" className="col-1" onClick={this.handleClick.bind(this)}></div>
 				</div>
 				<div className="col-img">
 					<div className="col-2" onClick={this.handleClick.bind(this)}></div>
