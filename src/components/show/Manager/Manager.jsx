@@ -29,6 +29,25 @@ class Manager extends React.Component {
 			}
 		});
 	}
+	componentDidMount() {
+		window.addEventListener("scroll", this.handleScroll.bind(this));
+	}
+	componentWillUnmount() {
+		window.removeEventListener("scroll", this.handleScroll.bind(this));
+	}
+	handleScroll() {
+		var offset = 10;
+		var colHeight = (this.refs.album.getShortCol()).height() + (this.refs.album.getShortCol()).offset().top;
+	    if (colHeight < ($(window).scrollTop() + $(window).height())) {
+	        this.refs.album.appendSingleImage();
+	        offset++;
+	    }
+	    if ($(document).scrollTop() > 500) {
+	        $(".icon-up-open-big").fadeIn();
+	    } else {
+	        $(".icon-up-open-big").fadeOut();
+	    }
+	}
 	changeClass(className) {
 		this.setState({
 			imageArr: this.state.image[className]
@@ -52,7 +71,7 @@ class Manager extends React.Component {
 		return (
 			<div onClick={this.handleClick.bind(this)}>
 				<Navigation changeClass={this.changeClass.bind(this)} />
-				<Album imageArr={this.state.imageArr} showMaxImage={this.showMaxImage.bind(this)} />
+				<Album ref="album" imageArr={this.state.imageArr} showMaxImage={this.showMaxImage.bind(this)} />
 				<Mask ref="mask" />
 				<Footer />
 			</div>

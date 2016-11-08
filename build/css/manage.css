@@ -32,7 +32,7 @@ body {
 i:hover {
     cursor: pointer;
 }
-.container {
+#container {
     padding-left: 220px;
 }
 .col-left {
@@ -70,14 +70,14 @@ i:hover {
     color: #fff;
     background-color: #2c3049;
 }
-#newAlbum {
+.newAlbum {
     width: 130px;
     margin: 50px auto;
     padding: 10px;
     border-radius: 5px;
     background-color: #f78755;
 }
-#newAlbum:hover {
+.newAlbum:hover {
     cursor: pointer;
 }
 .nav-menu-container {
@@ -99,12 +99,12 @@ i:hover {
     box-sizing: border-box;
     border-left: 5px solid #f88953;
 }
-#nav-menu {
+.nav-menu {
     position: relative;
     z-index: 1;
     margin-left: 15px;
 }
-#nav-menu li {
+.nav-menu li {
     line-height: 48px;
     position: relative;
     text-align: left;
@@ -119,25 +119,25 @@ i:hover {
     -o-transition: color 0.2s;
     transition: color 0.2s;
 }
-#nav-menu li:nth-child(1){
+.nav-menu li:nth-child(1){
     border-top: 0;
 }
-#nav-menu li.active {
+.nav-menu li.active {
     color: #fff;
 }
-#nav-menu li:hover {
+.nav-menu li:hover {
     cursor: pointer;
     color: #fff;
 }
 
-#show a {
+.show a {
     text-decoration: none;
     color: inherit;
 }
-#show a > i {
+.show a > i {
     text-indent: 0;
 }
-#import {
+.import {
     position: relative;
     left: 820px;
     display: block;
@@ -241,12 +241,12 @@ i:hover {
 .icon-up-open-big:hover {
     background-color: #e8594b;
 }
-#footer {
+.footer {
     margin: 20px auto;
     text-align: center;
     color: #93a1b5;
 }
-#shadow {
+.shadow {
     position: fixed;
     top: 0;
     left: 0;
@@ -282,17 +282,17 @@ i:hover {
     margin: 10px auto 6px 20px;
     color: #95a0b2;
 }
-#rotate {
+.rotate {
     height: 50px;
     text-align: center;
     background-color: #2c4a75;
 }
-#rotate i {
+.rotate i {
     font-size: 25px;
     line-height: 50px;
     padding: 3px;
 }
-#cut {
+.cut {
     font-size: 0.9em;
     overflow: hidden;
     background-color: #2c4a75;
@@ -328,7 +328,7 @@ i:hover {
 .text-height {
     margin-left: 20px;
 }
-#filter {
+.filter {
     display: flex;
     box-sizing: border-box;
     width: 100%;
@@ -339,13 +339,13 @@ i:hover {
     justify-content: center;
     align-items: center;
 }
-#filter li {
+.filter li {
     flex: 1;
 }
-#filter li:hover {
+.filter li:hover {
     cursor: pointer;
 }
-#scale {
+.scale {
     padding: 10px 20px;
     background-color: #2c4a75;
 }

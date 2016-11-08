@@ -3,15 +3,17 @@ var webpack = require('webpack');
 var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 module.exports = {
-  entry: [
-    'webpack/hot/dev-server',
-    'webpack-dev-server/client?http://localhost:8080',
-    path.resolve(__dirname, 'src/show.js')
-  ],
+  entry: {
+    // 'webpack/hot/dev-server',
+    // 'webpack-dev-server/client?http://localhost:8080',
+    bundle1: "./src/show.js",
+    bundle2: "./src/manage.js"
+    // path.resolve(__dirname, 'src/show.js')
+  },
   output: {
-    path: path.join(__dirname, 'build'),
-    filename: "js/bundle.js"
-    // publicPath: "/js/"
+    path: path.join(__dirname, 'build/js'),
+    filename: "[name].js",
+    publicPath: "/js/"
   },
   resolve: {
     extensions: ['', '.js', '.jsx'],

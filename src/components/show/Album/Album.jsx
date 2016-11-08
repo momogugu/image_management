@@ -4,6 +4,9 @@ import Images from '../Images/Images.jsx';
 
 class Album extends React.Component {
 	componentDidMount() {
+		// var observer = new IntersectionObserver(
+		// 	function
+		// );
 	}
 	appendImage(num) {
 		var _this = this;
@@ -21,21 +24,21 @@ class Album extends React.Component {
 	                    $(tmpImage).load(function() {
 	                        var col = _this.getShortCol();
 	                        col.append(tmpImage);
-	                        // console.log((_this.getShortCol()).offset().top);
 	                    });
 	                    offset++;
 	                }
 	            }(num))
 	        }
 	    }
-	    // console.log(this.refs.col1);
 	    // var colHeight = (_this.getShortCol()).height() + (_this.getShortCol()).offset().top;
 	    // if (colHeight < ($(window).scrollTop() + $(window).height())) {
 	    //     _this.appendSingleImage();
 	    //     offset++;
 	    // }
 	}
-	appendSingleImage() {
+	appendSingleImage(offset) {
+		var _this = this;
+		var imageArr = this.props.imageArr;
 		if (imageArr[offset]) {
 	        var tmpImage = new Image();
 	        tmpImage.src = imageArr[offset];
@@ -43,9 +46,9 @@ class Album extends React.Component {
 	        $(tmpImage).load(function() {
 	            var col = _this.getShortCol();
 	            col.append(tmpImage);
-	            var colHeight = (getShortCol()).height() + (getShortCol()).offset().top;
+	            var colHeight = (_this.getShortCol()).height() + (_this.getShortCol()).offset().top;
 	            if (colHeight < ($(window).scrollTop() + $(window).height())) {
-	                appendSingleImage();
+	                _this.appendSingleImage();
 	                offset++;
 	            }
 	        });
@@ -71,7 +74,7 @@ class Album extends React.Component {
 	}
 	render() {
 		// console.log(this.props.imageArr);
-		this.appendImage(6);
+		this.appendImage(10);
 		return (
 			<div className="water-fall">
 				<div className="col-img">
