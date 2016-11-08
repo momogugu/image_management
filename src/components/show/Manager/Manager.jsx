@@ -5,15 +5,17 @@ import Album from '../Album/Album.jsx';
 import Mask from '../Mask/Mask.jsx';
 import Footer from '../Footer/Footer.jsx';
 
+var offset = 10;
+
 class Manager extends React.Component {
 	constructor(props) {
 			super(props);
 			this.state = {
 				image: {},
 				imageArr: [],
-				maxImage: ''
+				maxImage: '',
 			};
-		}
+	}
 	componentWillMount() {
 		var _this = this;
 		$.ajax({
@@ -25,7 +27,6 @@ class Manager extends React.Component {
 					image: response,
 					imageArr: response.allimage
 				});
-            	 // _this.appendImage(6);
 			}
 		});
 	}
@@ -36,16 +37,37 @@ class Manager extends React.Component {
 		window.removeEventListener("scroll", this.handleScroll.bind(this));
 	}
 	handleScroll() {
-		var offset = 10;
+		// console.log(offset);
+		// var offset = 10;
 		var colHeight = (this.refs.album.getShortCol()).height() + (this.refs.album.getShortCol()).offset().top;
 	    if (colHeight < ($(window).scrollTop() + $(window).height())) {
-	        this.refs.album.appendSingleImage();
+	        this.appendSingleImage(offset);
 	        offset++;
 	    }
 	    if ($(document).scrollTop() > 500) {
 	        $(".icon-up-open-big").fadeIn();
 	    } else {
 	        $(".icon-up-open-big").fadeOut();
+	    }
+	}
+	appendSingleImage(offset) {
+		var _this = this;
+		var imageArr = this.state.imageArr;
+		if (imageArr[offset]) {
+	        var tmpImage = new Image();
+	        tmpImage.src = imageArr[offset];
+	        tmpImage.className = "min";
+	        $(tmpImage).load(function() {
+	            var col = _this.refs.album.getShortCol();
+	            col.append(tmpImage);
+	            var colHeight = (_this.refs.album.getShortCol()).height() + (_this.refs.album.getShortCol()).offset().top;
+	            if (colHeight < ($(window).scrollTop() + $(window).height())) {
+	                _this.appendSingleImage();
+	                offset++;
+	            }
+	        });
+	    } else {
+	        return false;
 	    }
 	}
 	changeClass(className) {

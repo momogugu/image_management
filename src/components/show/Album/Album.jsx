@@ -3,11 +3,6 @@ import React from 'react';
 import Images from '../Images/Images.jsx';
 
 class Album extends React.Component {
-	componentDidMount() {
-		// var observer = new IntersectionObserver(
-		// 	function
-		// );
-	}
 	appendImage(num) {
 		var _this = this;
 		var offset = 0;
@@ -36,26 +31,6 @@ class Album extends React.Component {
 	    //     offset++;
 	    // }
 	}
-	appendSingleImage(offset) {
-		var _this = this;
-		var imageArr = this.props.imageArr;
-		if (imageArr[offset]) {
-	        var tmpImage = new Image();
-	        tmpImage.src = imageArr[offset];
-	        tmpImage.className = "min";
-	        $(tmpImage).load(function() {
-	            var col = _this.getShortCol();
-	            col.append(tmpImage);
-	            var colHeight = (_this.getShortCol()).height() + (_this.getShortCol()).offset().top;
-	            if (colHeight < ($(window).scrollTop() + $(window).height())) {
-	                _this.appendSingleImage();
-	                offset++;
-	            }
-	        });
-	    } else {
-	        return false;
-	    }
-	}
 	getShortCol() {
 	    var height1 = $(".col-1").height();
 	    var height2 = $(".col-2").height();
@@ -73,7 +48,6 @@ class Album extends React.Component {
 		this.props.showMaxImage(e.target);
 	}
 	render() {
-		// console.log(this.props.imageArr);
 		this.appendImage(10);
 		return (
 			<div className="water-fall">
